@@ -82,5 +82,29 @@ portfolio activity:
 
 ## AI Use Declaration
 
-[To be completed at submission: tool used, what it was used for, and how
-the output was reviewed and verified.]
+**AI tool used:** Claude (Anthropic), accessed via claude.ai
+
+**What the AI tool was used for:**
+
+- Explaining the assessment brief in simpler terms and clarifying what each
+  portfolio activity requires
+- Comparing possible case studies and recommending one suitable for a
+  beginner (Library Management System)
+- Step-by-step guidance on setting up Git, GitHub Desktop, VS Code and the
+  repository folder structure
+- Drafting the initial case study statement in this README
+
+**How the output was reviewed and verified:**
+
+- I checked the explanation of the brief against the original assessment
+  document to confirm the requirements and mark allocations were accurate
+- I followed the setup steps myself and confirmed that the repository,
+  folders and commits appear correctly on GitHub
+- I read through the drafted case study statement, edited it to match my own
+  understanding of the system, and confirmed that every entity and operation
+  listed can be implemented in later portfolio activities
+- All database design, SQL scripts, testing and analysis in this portfolio
+  are my own work; AI was used as a learning aid, not as a substitute for
+  implementation
+
+_This declaration will be updated as the portfolio progresses._
