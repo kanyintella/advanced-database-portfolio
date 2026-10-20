@@ -11,11 +11,18 @@
 
 ### Organisation / Scenario
 
-Greenfield Community Library is a simulated public library network with three branches in the same city. It lends physical books, journals and e-books to registered members, and each branch manages its own stock while sharing one central catalogue.
+Greenfield Community Library is a simulated public library network with three
+branches in the same city. It lends physical books, journals and e-books to
+registered members, and each branch manages its own stock while sharing one
+central catalogue.
 
 ### Nature of the System
 
-The Library Management System is the central database that records the library's collection, its members, and every borrowing activity across all branches. It replaces manual registers and spreadsheets, so staff can see in real time which items are available, who has borrowed what, and which loans are overdue.
+The Library Management System is the central database that records the
+library's collection, its members, and every borrowing activity across all
+branches. It replaces manual registers and spreadsheets, so staff can see in
+real time which items are available, who has borrowed what, and which loans
+are overdue.
 
 ### Users of the Database
 
@@ -26,20 +33,21 @@ The Library Management System is the central database that records the library's
 
 ### Major Data to be Stored
 
-- **Books and items:** title, ISBN, publisher, year, category, item type
-  (book, journal, e-book) and number of copies per branch
+- **Books:** title, ISBN, publisher, year, category and item type
+  (book, journal, e-book)
+- **Book copies:** each physical copy of a title and the branch that holds it
 - **Authors:** author details, linked to the books they wrote
 - **Members:** member ID, name, contact details, membership type, join date
 - **Loans:** which member borrowed which copy, borrow date, due date, return date
 - **Fines:** amount charged for overdue returns and payment status
-- **Branches:** branch name, location and the stock held there
+- **Branches:** branch name and location
 - **Staff:** staff ID, name, role and assigned branch
 
 ### Key Operations the Database Will Support
 
-1. **Borrow a book:** create a loan record and reduce available copies
+1. **Borrow a book:** create a loan record and mark the copy as on loan
    in a single transaction
-2. **Return a book:** close the loan, increase available copies, and
+2. **Return a book:** close the loan, mark the copy as available, and
    calculate a fine if the return is late
 3. **Calculate fines:** compute overdue charges based on days late
 4. **Search the catalogue:** find books by title, author, category or ISBN
@@ -63,6 +71,16 @@ portfolio activity:
 
 ---
 
+## Portfolio Progress
+
+| Portfolio                                            | Activity                                | Status      |
+| ---------------------------------------------------- | --------------------------------------- | ----------- |
+| [Portfolio 1](portfolio-1-database-design/)          | Database Design and Modelling           | Completed   |
+| [Portfolio 2](portfolio-2-query-optimisation/)       | Query Processing and Optimisation       | Not started |
+| [Portfolio 3](portfolio-3-transactions-concurrency/) | Transactions and Concurrency            | Not started |
+| [Portfolio 4](portfolio-4-nosql/)                    | NoSQL and Advanced Data Models          | Not started |
+| [Portfolio 5](portfolio-5-distributed-cloud/)        | Distributed and Cloud Database Exercise | Not started |
+
 ## Repository Structure
 
 | Folder                                  | Content                                                         |
@@ -75,10 +93,12 @@ portfolio activity:
 
 ## Tools Used
 
-- PostgreSQL (relational database)
+- PostgreSQL and pgAdmin 4 (relational database and management interface)
 - MongoDB (NoSQL database) – _planned_
-- Git and GitHub (version control)
+- Git, GitHub and GitHub Desktop (version control)
 - VS Code (editor)
+
+---
 
 ## AI Use Declaration
 
@@ -86,13 +106,24 @@ portfolio activity:
 
 **What the AI tool was used for:**
 
+_General_
+
 - Explaining the assessment brief in simpler terms and clarifying what each
   portfolio activity requires
 - Comparing possible case studies and recommending one suitable for a
   beginner (Library Management System)
-- Step-by-step guidance on setting up Git, GitHub Desktop, VS Code and the
-  repository folder structure
-- Drafting the initial case study statement in this README
+- Step-by-step guidance on setting up Git, GitHub Desktop, VS Code, pgAdmin
+  and the repository folder structure
+- Drafting the case study statement in this README
+
+_Portfolio 1 – Database Design and Modelling_
+
+- Generating the ER diagram image (`er-diagram.png`) from the entities and
+  relationships of the case study
+- Drafting the PostgreSQL schema script (`schema.sql`), including data types,
+  keys and constraints
+- Drafting the Portfolio 1 README, including the normalisation explanation
+  and design decisions
 
 **How the output was reviewed and verified:**
 
@@ -100,11 +131,18 @@ portfolio activity:
   document to confirm the requirements and mark allocations were accurate
 - I followed the setup steps myself and confirmed that the repository,
   folders and commits appear correctly on GitHub
-- I read through the drafted case study statement, edited it to match my own
-  understanding of the system, and confirmed that every entity and operation
-  listed can be implemented in later portfolio activities
-- All database design, SQL scripts, testing and analysis in this portfolio
-  are my own work; AI was used as a learning aid, not as a substitute for
-  implementation
+- I checked that every entity, attribute and relationship in the ER diagram
+  matches the tables in `schema.sql`, and that each cardinality reflects how
+  the library actually operates
+- I ran `schema.sql` in pgAdmin on my own `library_db` database and confirmed
+  that all nine tables were created (see screenshots in Portfolio 1)
+- I tested the constraints by inserting invalid data (a duplicate fine, a loan
+  for a non-existent copy, and an invalid item type) and confirmed that the
+  database rejected each one
+- I studied the normalisation explanation until I could explain 1NF, 2NF and
+  3NF using my own schema, and edited the wording to reflect my understanding
 
-_This declaration will be updated as the portfolio progresses._
+AI was used as a learning aid. I am responsible for, and able to explain,
+all work submitted in this portfolio.
+
+_This declaration is updated as each portfolio activity is completed._
