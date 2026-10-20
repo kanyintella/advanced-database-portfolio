@@ -13,7 +13,6 @@ library database.
 
 | File                                | Description                                     |
 | ----------------------------------- | ----------------------------------------------- |
-| `er-diagram.drawio`                 | Editable ER diagram created in draw.io          |
 | `er-diagram.png`                    | Exported image of the ER diagram                |
 | `schema.sql`                        | PostgreSQL script that creates all nine tables  |
 | `screenshots/schema-run-result.png` | Output of running `schema.sql` in pgAdmin       |
