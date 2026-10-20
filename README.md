@@ -125,6 +125,13 @@ _Portfolio 1 – Database Design and Modelling_
 - Drafting the Portfolio 1 README, including the normalisation explanation
   and design decisions
 
+_Portfolio 2 – Query Processing and Optimisation_
+
+- Drafting the sample data generator, the six business queries and the
+  indexing experiment scripts
+- Drafting the Portfolio 2 README and performance analysis based on my
+  execution plan results
+
 **How the output was reviewed and verified:**
 
 - I checked the explanation of the brief against the original assessment
@@ -141,6 +148,9 @@ _Portfolio 1 – Database Design and Modelling_
   database rejected each one
 - I studied the normalisation explanation until I could explain 1NF, 2NF and
   3NF using my own schema, and edited the wording to reflect my understanding
+- I ran all Portfolio 2 scripts myself in pgAdmin (PostgreSQL 18), recorded
+  the execution times and buffer counts from my own execution plans, and
+  checked that every figure in the Portfolio 2 README matches my screenshots
 
 AI was used as a learning aid. I am responsible for, and able to explain,
 all work submitted in this portfolio.
