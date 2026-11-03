@@ -74,37 +74,37 @@ portfolio activity:
 
 ## Portfolio Progress
 
-| Portfolio                                            | Activity                                | Status    |
-| ---------------------------------------------------- | --------------------------------------- | --------- |
-| [Portfolio 1](portfolio-1-database-design/)          | Database Design and Modelling           | Completed |
-| [Portfolio 2](portfolio-2-query-optimisation/)       | Query Processing and Optimisation       | Completed |
-| [Portfolio 3](portfolio-3-transactions-concurrency/) | Transactions and Concurrency            | Completed |
-| [Portfolio 4](portfolio-4-nosql/)                    | NoSQL and Advanced Data Models          | Completed |
-| [Portfolio 5](portfolio-5-distributed-cloud/)        | Distributed and Cloud Database Exercise | Completed |
+| Portfolio                                                                | Activity                                | Status    |
+| ------------------------------------------------------------------------ | --------------------------------------- | --------- |
+| [Portfolio 1](Tella_Adekanyinsola_portfolio-1-database-design/)          | Database Design and Modelling           | Completed |
+| [Portfolio 2](Tella_Adekanyinsola_portfolio-2-query-optimisation/)       | Query Processing and Optimisation       | Completed |
+| [Portfolio 3](Tella_Adekanyinsola_portfolio-3-transactions-concurrency/) | Transactions and Concurrency            | Completed |
+| [Portfolio 4](Tella_Adekanyinsola_portfolio-4-nosql/)                    | NoSQL and Advanced Data Models          | Completed |
+| [Portfolio 5](Tella_Adekanyinsola_portfolio-5-distributed-cloud/)        | Distributed and Cloud Database Exercise | Completed |
 
 ## Portfolio Summary
 
-**[Portfolio 1 – Database Design and Modelling](portfolio-1-database-design/)**
+**[Portfolio 1 – Database Design and Modelling](Tella_Adekanyinsola_portfolio-1-database-design/)**
 An ER diagram and a PostgreSQL schema of nine tables with primary, foreign
 and unique keys and `CHECK` constraints, normalised to 3NF. Design decisions
 include separating `book` (titles) from `book_copy` (physical items) and a
 junction table for the many-to-many book–author relationship.
 
-**[Portfolio 2 – Query Processing and Optimisation](portfolio-2-query-optimisation/)**
+**[Portfolio 2 – Query Processing and Optimisation](Tella_Adekanyinsola_portfolio-2-query-optimisation/)**
 A dataset of over 280,000 rows (including 203,000 loans) and six business
 queries. Three indexing experiments with `EXPLAIN ANALYZE` showed a ~125×
 speed-up for an index on a foreign key, ~12× for a 40 kB partial index, and
 only ~1.2× for a non-selective date index, explained using execution plans
 and buffer counts.
 
-**[Portfolio 3 – Transactions and Concurrency](portfolio-3-transactions-concurrency/)**
+**[Portfolio 3 – Transactions and Concurrency](Tella_Adekanyinsola_portfolio-3-transactions-concurrency/)**
 Eight demonstrations of COMMIT, ROLLBACK, automatic rollback on error and
 SAVEPOINT, and, using two concurrent sessions, a double-borrow race
 condition, its fix with `SELECT ... FOR UPDATE`, non-repeatable reads under
 READ COMMITTED versus REPEATABLE READ, a prevented lost update, and a
 unique partial index enforcing one open loan per copy.
 
-**[Portfolio 4 – NoSQL and Advanced Data Models](portfolio-4-nosql/)**
+**[Portfolio 4 – NoSQL and Advanced Data Models](Tella_Adekanyinsola_portfolio-4-nosql/)**
 The catalogue modelled in MongoDB Atlas as flexible documents (books,
 journals and e-books with different fields), with embedding versus
 referencing decisions, `$jsonSchema` validation, an atomic single-document
@@ -112,7 +112,7 @@ borrow, a multi-document transaction, aggregation pipelines with `$lookup`,
 a multikey index (COLLSCAN to IXSCAN), and a comparison with the relational
 design.
 
-**[Portfolio 5 – Distributed and Cloud Database Exercise](portfolio-5-distributed-cloud/)**
+**[Portfolio 5 – Distributed and Cloud Database Exercise](Tella_Adekanyinsola_portfolio-5-distributed-cloud/)**
 Inspection of the Atlas three-member replica set (reads served by primary
 and secondary, write and read concerns), yearly range partitioning of the
 loan table in PostgreSQL (partition pruning: 1,490 pages down to 351), and
@@ -121,13 +121,13 @@ and cloud security.
 
 ## Repository Structure
 
-| Folder                                  | Content                                                                      |
-| --------------------------------------- | ---------------------------------------------------------------------------- |
-| `portfolio-1-database-design/`          | ER diagram, relational schema, keys, constraints, normalisation              |
-| `portfolio-2-query-optimisation/`       | Sample data, SQL queries, execution plans, indexing and performance analysis |
-| `portfolio-3-transactions-concurrency/` | Commit, rollback, savepoint, isolation and concurrency demonstrations        |
-| `portfolio-4-nosql/`                    | MongoDB document model, queries, transactions, aggregation and indexes       |
-| `portfolio-5-distributed-cloud/`        | Replication on Atlas, PostgreSQL partitioning, distributed design            |
+| Folder                                                      | Content                                                                      |
+| ----------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `Tella_Adekanyinsola_portfolio-1-database-design/`          | ER diagram, relational schema, keys, constraints, normalisation              |
+| `Tella_Adekanyinsola_portfolio-2-query-optimisation/`       | Sample data, SQL queries, execution plans, indexing and performance analysis |
+| `Tella_Adekanyinsola_portfolio-3-transactions-concurrency/` | Commit, rollback, savepoint, isolation and concurrency demonstrations        |
+| `Tella_Adekanyinsola_portfolio-4-nosql/`                    | MongoDB document model, queries, transactions, aggregation and indexes       |
+| `Tella_Adekanyinsola_portfolio-5-distributed-cloud/`        | Replication on Atlas, PostgreSQL partitioning, distributed design            |
 
 Each folder contains its scripts, a `screenshots/` folder of evidence, and
 a README explaining how the work was implemented and tested.
