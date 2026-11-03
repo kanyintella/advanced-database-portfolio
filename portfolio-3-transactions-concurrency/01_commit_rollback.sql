@@ -2,10 +2,6 @@
 -- Greenfield Community Library Management System
 -- Portfolio 3, Step 1: COMMIT, ROLLBACK and SAVEPOINT
 -- =====================================================================
--- Uses ONE Query Tool tab. Run 00_setup.sql first.
--- Highlight each numbered block and press F5.
--- Screenshot the VERIFY result after each demo.
--- =====================================================================
 
 
 -- =====================================================================
@@ -75,8 +71,6 @@ SELECT loan_id, -50.00 FROM loan
 WHERE copy_id = 90001 AND return_date = CURRENT_DATE;
 
 -- 3c. The transaction is now aborted; end it.
--- (If pgAdmin already rolled back automatically, this just shows a
---  "no transaction in progress" warning, which is fine.)
 ROLLBACK;
 
 -- 3d. VERIFY: still On Loan and the loan is still open.

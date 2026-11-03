@@ -2,9 +2,6 @@
 -- Greenfield Community Library Management System
 -- Portfolio 3, Step 2: Concurrency — SESSION B
 -- =====================================================================
--- Open this file in a SECOND Query Tool tab (Session A is in the
--- other tab). Steps are numbered across BOTH files; run them in order.
--- =====================================================================
 
 
 -- =====================================================================

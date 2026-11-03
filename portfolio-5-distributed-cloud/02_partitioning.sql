@@ -2,17 +2,6 @@
 -- Greenfield Community Library Management System
 -- Portfolio 5, Part B: Horizontal partitioning of the loan table
 -- =====================================================================
--- Run in library_db (pgAdmin), ONE numbered block at a time.
---
--- Partitioning splits one large table into smaller pieces by a key,
--- here the year a book was borrowed. Queries that filter on that key
--- only read the pieces they need ("partition pruning").
--- Sharding applies the same idea ACROSS SERVERS: each piece lives on
--- a different machine. This exercise shows the principle on one server.
---
--- A separate table, loan_partitioned, is used so the original loan
--- table (and everything that depends on it) is left untouched.
--- =====================================================================
 
 
 -- ---------------------------------------------------------------------

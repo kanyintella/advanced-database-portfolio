@@ -2,11 +2,7 @@
 -- Greenfield Community Library Management System
 -- Portfolio 1: Relational Schema (PostgreSQL)
 -- =====================================================================
--- Run this whole script in the library_db database.
--- It drops existing tables first, so it can be re-run safely.
--- Tables are created parents-first, because a foreign key can only
--- point to a table that already exists.
--- =====================================================================
+
 
 DROP TABLE IF EXISTS fine        CASCADE;
 DROP TABLE IF EXISTS loan        CASCADE;

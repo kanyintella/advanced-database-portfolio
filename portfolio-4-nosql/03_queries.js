@@ -2,12 +2,8 @@
 // Greenfield Community Library Management System
 // Portfolio 4, Step 3: Queries, updates and transactions
 // =====================================================================
-// Run each numbered block ON ITS OWN (paste it into the shell and
-// press Enter), and screenshot the result.
-// =====================================================================
 
-db = db.getSiblingDB("library_nosql");   // switch to the library_nosql database
-
+db = db.getSiblingDB("library_nosql"); // switch to the library_nosql database
 
 // ---------------------------------------------------------------------
 // Q1. Search by author across ALL item types
@@ -16,9 +12,8 @@ db = db.getSiblingDB("library_nosql");   // switch to the library_nosql database
 // ---------------------------------------------------------------------
 db.catalogue.find(
   { "authors.last_name": "Adichie" },
-  { _id: 1, title: 1, item_type: 1, publication_year: 1 }
+  { _id: 1, title: 1, item_type: 1, publication_year: 1 },
 );
-
 
 // ---------------------------------------------------------------------
 // Q2. Titles with an AVAILABLE copy at Central Branch
@@ -26,19 +21,20 @@ db.catalogue.find(
 // ---------------------------------------------------------------------
 db.catalogue.find(
   { copies: { $elemMatch: { branch: "Central", status: "Available" } } },
-  { _id: 0, title: 1, item_type: 1 }
+  { _id: 0, title: 1, item_type: 1 },
 );
-
 
 // ---------------------------------------------------------------------
 // Q3. E-books with a free licence right now
 // $expr compares two fields inside the same document.
 // ---------------------------------------------------------------------
 db.catalogue.find(
-  { item_type: "E-book", $expr: { $lt: ["$licences.in_use", "$licences.total"] } },
-  { _id: 0, title: 1, licences: 1 }
+  {
+    item_type: "E-book",
+    $expr: { $lt: ["$licences.in_use", "$licences.total"] },
+  },
+  { _id: 0, title: 1, licences: 1 },
 );
-
 
 // ---------------------------------------------------------------------
 // Q4. Journal issues with their embedded articles
@@ -46,18 +42,16 @@ db.catalogue.find(
 // ---------------------------------------------------------------------
 db.catalogue.find(
   { item_type: "Journal" },
-  { _id: 0, title: 1, volume: 1, issue: 1, articles: 1 }
+  { _id: 0, title: 1, volume: 1, issue: 1, articles: 1 },
 );
-
 
 // ---------------------------------------------------------------------
 // Q5. Overdue loans (still out and past the due date)
 // ---------------------------------------------------------------------
 db.loans.find(
   { return_date: null, due_date: { $lt: new Date() } },
-  { _id: 0, member_id: 1, title: 1, due_date: 1 }
+  { _id: 0, member_id: 1, title: 1, due_date: 1 },
 );
-
 
 // ---------------------------------------------------------------------
 // Q6. Atomic borrow of a specific copy (run it TWICE)
@@ -69,11 +63,13 @@ db.loans.find(
 // (Compare with the double-borrow problem in Portfolio 3, Demo 5.)
 // ---------------------------------------------------------------------
 db.catalogue.findOneAndUpdate(
-  { _id: "B001", copies: { $elemMatch: { copy_id: "B001-C1", status: "Available" } } },
+  {
+    _id: "B001",
+    copies: { $elemMatch: { copy_id: "B001-C1", status: "Available" } },
+  },
   { $set: { "copies.$.status": "On Loan" } },
-  { returnDocument: "after", projection: { title: 1, copies: 1 } }
+  { returnDocument: "after", projection: { title: 1, copies: 1 } },
 );
-
 
 // ---------------------------------------------------------------------
 // Q7. Multi-document TRANSACTION: borrow an e-book licence
@@ -90,16 +86,19 @@ db.catalogue.findOneAndUpdate(
   try {
     const result = sdb.catalogue.updateOne(
       { _id: "E002", $expr: { $lt: ["$licences.in_use", "$licences.total"] } },
-      { $inc: { "licences.in_use": 1 } }
+      { $inc: { "licences.in_use": 1 } },
     );
     if (result.modifiedCount === 0) {
       throw new Error("No free licence for E002");
     }
     sdb.loans.insertOne({
-      member_id: "M105", item_id: "E002", licence: true,
+      member_id: "M105",
+      item_id: "E002",
+      licence: true,
       title: "Designing Data-Intensive Applications",
-      borrow_date: new Date(), due_date: new Date(Date.now() + 14 * 86400000),
-      return_date: null
+      borrow_date: new Date(),
+      due_date: new Date(Date.now() + 14 * 86400000),
+      return_date: null,
     });
     session.commitTransaction();
     print("Transaction COMMITTED: licence taken and loan recorded");
@@ -111,14 +110,17 @@ db.catalogue.findOneAndUpdate(
   }
 })();
 
-
 // Q7 VERIFY: licences in use went from 1 to 2, and M105 has the loan
 ({
-  licences: db.catalogue.findOne({ _id: "E002" }, { _id: 0, licences: 1 }).licences,
-  m105_loans: db.loans.find({ member_id: "M105", item_id: "E002" },
-                            { _id: 0, title: 1, borrow_date: 1 }).toArray()
+  licences: db.catalogue.findOne({ _id: "E002" }, { _id: 0, licences: 1 })
+    .licences,
+  m105_loans: db.loans
+    .find(
+      { member_id: "M105", item_id: "E002" },
+      { _id: 0, title: 1, borrow_date: 1 },
+    )
+    .toArray(),
 });
-
 
 // ---------------------------------------------------------------------
 // Q8. Schema validation rejects a bad document (ERROR expected)
@@ -130,5 +132,5 @@ db.catalogue.insertOne({
   item_type: "Magazine",
   title: "Library Monthly",
   category: "General",
-  publication_year: 2026
+  publication_year: 2026,
 });

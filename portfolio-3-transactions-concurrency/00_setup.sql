@@ -2,16 +2,7 @@
 -- Greenfield Community Library Management System
 -- Portfolio 3, Step 0: Set up demo data for the transaction tests
 -- =====================================================================
--- Run this whole script once in library_db before the demos.
--- It creates ONE book with ONE copy (copy_id 90001), so every demo
--- is about "the last available copy" and the results are easy to read.
--- It also creates a returned late loan with an unpaid fine
--- (fine_id 90001) for the isolation demo.
---
--- Re-run this script at any time to reset the demo data.
--- =====================================================================
 
--- Remove any earlier demo data and the safeguard index from Demo 8
 DROP INDEX IF EXISTS uq_one_open_loan_per_copy;
 DELETE FROM fine        WHERE fine_id = 90001
                            OR loan_id IN (SELECT loan_id FROM loan WHERE copy_id = 90001);

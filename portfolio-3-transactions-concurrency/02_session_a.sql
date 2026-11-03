@@ -2,15 +2,6 @@
 -- Greenfield Community Library Management System
 -- Portfolio 3, Step 2: Concurrency — SESSION A
 -- =====================================================================
--- Open this file in one Query Tool tab and 02_session_b.sql in a
--- SECOND Query Tool tab. Each tab is a separate database connection,
--- like two librarians at two different desks.
---
--- Steps are numbered across BOTH files. Run them strictly in order:
--- Step 1 here, Step 2 in Session B, Step 3 here, and so on.
--- Highlight only the statements under the step and press F5.
--- =====================================================================
-
 
 -- =====================================================================
 -- DEMO 5: THE PROBLEM — two librarians borrow the last copy

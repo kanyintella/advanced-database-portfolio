@@ -2,10 +2,6 @@
 -- Greenfield Community Library Management System
 -- Portfolio 2, Step 2: Business queries
 -- =====================================================================
--- Each query answers a real question the library needs answered.
--- In pgAdmin, highlight ONE query at a time and press F5 to run it,
--- so the result grid shows that query's output.
--- =====================================================================
 
 
 -- ---------------------------------------------------------------------

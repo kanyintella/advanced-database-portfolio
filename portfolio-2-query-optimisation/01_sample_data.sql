@@ -2,16 +2,7 @@
 -- Greenfield Community Library Management System
 -- Portfolio 2, Step 1: Load realistic sample data
 -- =====================================================================
--- Run this in library_db AFTER schema.sql.
--- It generates enough rows (200,000+ loans) for indexes to make a
--- measurable difference. Small tables are scanned so quickly that
--- optimisation cannot be demonstrated on them.
---
--- setseed() makes random() produce the same values on every run,
--- so the dataset is reproducible.
--- =====================================================================
 
--- Clear any existing data and reset the ID counters
 TRUNCATE fine, loan, staff, member, book_copy, book_author, author, book, branch
 RESTART IDENTITY CASCADE;
 
@@ -83,7 +74,7 @@ INSERT INTO book_author (book_id, author_id)
 SELECT book_id, 1 + floor(random() * 1500)::int
 FROM book
 WHERE random() < 0.25
-ON CONFLICT DO NOTHING;   -- skip if the same author was picked twice
+ON CONFLICT DO NOTHING;   
 
 -- ---------------------------------------------------------------------
 -- Book copies: each book has 1 to 5 copies spread across branches

@@ -2,25 +2,6 @@
 -- Greenfield Community Library Management System
 -- Portfolio 2, Step 3: Query optimisation with indexes
 -- =====================================================================
--- Each experiment follows the same pattern:
---   1. EXPLAIN ANALYZE the query with no index   (BEFORE)
---   2. CREATE an index designed for that query
---   3. EXPLAIN ANALYZE the same query again      (AFTER)
---
--- HOW TO RUN IN pgAdmin:
---   Highlight ONE statement at a time and press F5.
---   Run each EXPLAIN ANALYZE 2-3 times and record the typical
---   "Execution Time", because the first run is often slower while
---   data is loaded into memory.
---   Screenshot the BEFORE and AFTER plan for each experiment.
---
--- WHAT TO LOOK FOR IN THE PLAN:
---   Seq Scan    = PostgreSQL reads every row in the table
---   Index Scan / Bitmap Index Scan = PostgreSQL uses an index to jump
---                 straight to the matching rows
---   actual rows = how many rows that step really returned
---   Execution Time = total time the query took
--- =====================================================================
 
 
 -- ---------------------------------------------------------------------
